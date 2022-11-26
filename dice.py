@@ -11,9 +11,13 @@ import time
 import requests
 from selenium.common import exceptions
 from datetime import datetime, timedelta
+from tqdm import tqdm
 
-a = b = c = d = e = f = 0
+a = b = c = d = e = f = g = h = i = j = 0
 idx = 7
+tot = 8
+
+
 
 def getList():
     p = 1
@@ -31,6 +35,10 @@ def getList():
         lst = 2
     return gst
 
+def write_text(mmm):
+    file1 = open("myfile.txt", "a+")  # append mode
+    file1.write(f"{mmm} \n")
+    file1.close()
 
 options = Options()
 options.headless = True
@@ -51,6 +59,7 @@ while True:
         tme = '00:00'
     if tme == '00:27':
         lst = getList()
+        ctme = datetime.now().strftime("%I:%M%p on %B %d, %Y")
         if len(lst) < 2:
                 continue
         red = lst[1]
@@ -74,29 +83,76 @@ while True:
         else:
             e += 1
             f = 0
-        if a == idx:
-            a = b = c = d = e = f = 0
-            
-        if b == idx:
-            a = b = c = d = e = f = 0
-            
-        if c == idx:
-            a = b = c = d = e = f = 0
-            
-        if d == idx:
-            a = b = c = d = e = f = 0
-            
-        if e == idx:
-            a = b = c = d = e = f = 0
-            
-        if f == idx:
-            a = b = c = d = e = f = 0
-            
-        print(f'a is {a}')
-        print(f'b is {b}')
-        print(f'c is {c}')
-        print(f'd is {d}')
-        print(f'e is {e}')
-        print(f'f is {f}')
-        print("############################")
+        if red < 3.5:
+            g = 0
+            h += 1
+        else:
+            g += 1
+            h = 0
+        if blue < 3.5:
+            i = 0
+            j += 1
+        else:
+            i += 1
+            j = 0
+        '''print(f"one is ...{a}")
+        print(f"two is ...{b}")
+        print(f"three is .{c}")
+        print(f"four is ..{d}")
+        print(f"five is ..{e}")
+        print(f"six is ...{f}")
+        print(f"seven is .{g}")
+        print(f"eight is .{h}")
+        print(f"nine is ..{i}")
+        print(f"ten is ...{j}")
+        print('####################################')'''
+        pbar_a = tqdm(total=tot)
+        pbar_a.set_description(f'one is ...{a}')
+        pbar_a.update(a)
+        pbar_a.close()
+
+        pbar_b = tqdm(total=tot)
+        pbar_b.set_description(f'two is ...{b}')
+        pbar_b.update(b)
+        pbar_b.close()
+
+        pbar_c = tqdm(total=tot)
+        pbar_c.set_description(f'three is .{c}')
+        pbar_c.update(c)
+        pbar_c.close()
+
+        pbar_d = tqdm(total=tot)
+        pbar_d.set_description(f'four is ..{d}')
+        pbar_d.update(d)
+        pbar_d.close()
+
+        pbar_e = tqdm(total=tot)
+        pbar_e.set_description(f'five is ..{e}')
+        pbar_e.update(e)
+        pbar_e.close()
+
+        pbar_f = tqdm(total=tot)
+        pbar_f.set_description(f'six is ...{f}')
+        pbar_f.update(f)
+        pbar_f.close()
+
+        pbar_g = tqdm(total=tot)
+        pbar_g.set_description(f'seven is .{g}')
+        pbar_g.update(g)
+        pbar_g.close()
+
+        pbar_h = tqdm(total=tot)
+        pbar_h.set_description(f'eight is .{h}')
+        pbar_h.update(h)
+        pbar_h.close()
+
+        pbar_i = tqdm(total=tot)
+        pbar_i.set_description(f'nine is ..{i}')
+        pbar_i.update(i)
+        pbar_i.close()
+
+        pbar_j = tqdm(total=tot)
+        pbar_j.set_description(f'ten is ...{j}')
+        pbar_j.update(j)
+        pbar_j.close()
     time.sleep(1)
