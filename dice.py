@@ -12,6 +12,7 @@ import requests
 from selenium.common import exceptions
 from datetime import datetime, timedelta
 from tqdm import tqdm
+import os
 
 a = b = c = d = e = f = g = h = i = j = 0
 idx = 7
@@ -106,6 +107,7 @@ while True:
         print(f"nine is ..{i}")
         print(f"ten is ...{j}")
         print('####################################')'''
+        os.system('cls' if os.name == 'nt' else 'clear')
         pbar_a = tqdm(total=tot)
         pbar_a.set_description(f'one is ...{a}')
         pbar_a.update(a)

@@ -1,11 +1,16 @@
 from requests_html import HTMLSession
 
-url = 'http://house.speakingsame.com/p.php?q=Lavington%2C+NSW'
+url = "https://phantombuster.com/api/v1/agent/8558197011716025/launch"
 session = HTMLSession()
 
-r = session.get(url)
+payload={'output': 'result-object'}
+
+headers = {
+  'X-Phantombuster-Key': 'CSnrI8Om3Ml2Qt1AjXddG1dn0ifKs6gIEBBZElKMxUU',
+  'output': 'result-object'
+}
+
+r = session.get(url, headers=headers, data=payload)
 r.html.render()
 
-items = about = r.html.find('body > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > b:nth-child(1)')
-#items is the list of all divs with product info
-print(items)
+print(r.text)
